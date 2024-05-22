@@ -1,0 +1,13 @@
+{
+  "version": "6",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1716391911479,
+      "tag": "0000_flowery_dreaming_celestial",
+      "breakpoints": true
+    }
+  ]
+}

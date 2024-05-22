@@ -7,15 +7,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run with-env bun run --watch src/index.ts",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env --",
+    "db:generate": "npx drizzle-kit generate",
+    "db:push": "bun run with-env npx drizzle-kit push"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.0.2",
     "drizzle-orm": "^0.30.10",
-    "elysia": "latest"
+    "elysia": "latest",
+    "pg": "^8.11.5",
+    "@t3-oss/env-core": "^0.10.1"
   },
   "devDependencies": {
     "bun-types": "latest",
-    "drizzle-kit": "^0.21.2"
+    "drizzle-kit": "^0.21.2",
+    "@types/pg": "^8.11.6"
   }
 }

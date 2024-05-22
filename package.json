@@ -6,11 +6,13 @@
     "lint": "turbo run lint",
     "format": "prettier --write .",
     "infra:up": "docker-compose up -d",
-    "infra:down": "docker-compose down"
+    "infra:down": "docker-compose down",
+    "db:generate": "turbo run db:generate --filter=./packages/server",
+    "db:push": "turbo run db:push --filter=./packages/server"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
     "@repo/eslint-config": "*",
+    "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "prettier-plugin-svelte": "^3.2.2",
     "turbo": "latest"

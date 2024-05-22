@@ -1,9 +1,18 @@
 import { Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Client } from 'pg';
+import { env } from '../env';
+
+const client = new Client({ connectionString: env.DB_URL });
+await client.connect();
+
+const db = drizzle(client);
 
 const app = new Elysia()
   .use(cors())
-  .get('/', () => 'Hello Elysia')
+  .state('db', db)
+  .get('/', ({ store: {} }) => 'Hello Elysia')
   .get('/banana', () => 'bananinha')
   .listen(3000);
 
