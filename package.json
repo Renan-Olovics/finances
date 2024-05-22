@@ -4,7 +4,9 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "infra:up": "docker-compose up -d",
+    "infra:down": "docker-compose down"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
@@ -20,5 +22,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "dotenv-cli": "^7.4.2"
+  }
 }
