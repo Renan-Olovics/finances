@@ -1,4 +1,4 @@
-import { createEnv } from '@t3-oss/env-core/dist';
+import { createEnv } from '@t3-oss/env-core';
 import { z } from 'zod';
 
 export const env = createEnv({
@@ -10,7 +10,7 @@ export const env = createEnv({
     POSTGRES_USER: z.string().optional().default('postgres'),
     POSTGRES_PASSWORD: z.string().optional().default('docker-postgres'),
     POSTGRES_DB: z.string().optional().default('postgres'),
-    PORT: z.number().optional().default(3333)
+    PORT: z.coerce.number().optional().default(3000)
   },
   runtimeEnv: process.env
 });
