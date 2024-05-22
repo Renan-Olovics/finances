@@ -3,14 +3,17 @@ import { swagger } from '@elysiajs/swagger';
 import { cors } from '@elysiajs/cors';
 import { Elysia } from 'elysia';
 
-import { env } from '@/index';
 import { db } from '@/providers';
+import { health } from '@/modules';
+import { env } from '.';
 
-const app = new Elysia()
+export const app = new Elysia()
   .use(cors())
   .use(swagger())
   .use(serverTiming())
   .decorate('db', db)
+  .get('/', () => 'Welcome to Elysia!')
+  .use(health)
   .listen(env.PORT);
 
 export type App = typeof app;
