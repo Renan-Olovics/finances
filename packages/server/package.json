@@ -1,15 +1,18 @@
 {
-  "name": "server",
+  "name": "@repo/server",
   "version": "1.0.50",
+  "types": "src/index.ts",
+  "module": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
     "elysia": "latest"
   },
   "devDependencies": {
     "bun-types": "latest"
-  },
-  "module": "src/index.js"
+  }
 }

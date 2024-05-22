@@ -15,7 +15,9 @@
     "test:unit": "vitest"
   },
   "dependencies": {
-    "@repo/ui": "*"
+    "@repo/ui": "*",
+    "@repo/server": "*",
+    "@elysiajs/eden": "^1.0.13"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.1",
