@@ -1,11 +1,11 @@
-import { serverTiming } from '@elysiajs/server-timing';
-import { swagger } from '@elysiajs/swagger';
-import { cors } from '@elysiajs/cors';
-import { Elysia } from 'elysia';
+import { serverTiming } from '@elysiajs/server-timing'
+import { swagger } from '@elysiajs/swagger'
+import { cors } from '@elysiajs/cors'
+import { Elysia } from 'elysia'
 
-import { db } from '@/providers';
-import { health } from '@/modules';
-import { env } from '.';
+import { db } from '@/providers'
+import { health } from '@/modules'
+import { env } from '.'
 
 export const app = new Elysia()
   .use(cors())
@@ -14,8 +14,8 @@ export const app = new Elysia()
   .decorate('db', db)
   .get('/', () => 'Welcome to Elysia!')
   .use(health)
-  .listen(env.PORT);
+  .listen(env.PORT)
 
-export type App = typeof app;
+export type App = typeof app
 
-console.log(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
+console.log(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`)

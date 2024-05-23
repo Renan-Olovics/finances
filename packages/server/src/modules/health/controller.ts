@@ -1,3 +1,3 @@
-import Elysia from 'elysia';
+import Elysia from 'elysia'
 
-export const health = new Elysia({ prefix: '/health' }).get('', () => 'Hi!');
+export const health = new Elysia({ prefix: '/health' }).get('', () => 'Hi!')

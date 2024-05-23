@@ -1,4 +1,4 @@
-export { env } from '../env';
-export type { App } from './server';
+export { env } from '../env'
+export type { App } from './server'
 
-import './server';
+import './server'

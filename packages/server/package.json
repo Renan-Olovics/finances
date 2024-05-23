@@ -23,6 +23,14 @@
   "devDependencies": {
     "bun-types": "latest",
     "drizzle-kit": "^0.21.2",
-    "@types/pg": "^8.11.6"
+    "@types/pg": "^8.11.6",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^8.57.0",
+    "@repo/eslint-config": "*",
+    "prettier": "^3.2.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }
