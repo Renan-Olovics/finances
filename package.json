@@ -29,7 +29,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "aws-sdk": "^2.1626.0",
     "dotenv-cli": "^7.4.2"
   }
 }

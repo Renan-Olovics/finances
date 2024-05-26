@@ -5,6 +5,8 @@ import { Elysia } from 'elysia'
 
 import { db } from '@/providers'
 import { health } from '@/modules'
+
+import { sendEmail } from './providers/mail'
 import { env } from '.'
 
 export const app = new Elysia()
@@ -13,6 +15,7 @@ export const app = new Elysia()
   .use(serverTiming())
   .decorate('db', db)
   .get('/', () => 'Welcome to Elysia!')
+  .get('/kkk', () => sendEmail(['renanolovics@gmail.com']))
   .use(health)
   .listen(env.PORT)
 

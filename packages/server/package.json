@@ -12,6 +12,8 @@
     "db:push": "bun run with-env npx drizzle-kit push"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.582.0",
+    "@aws-sdk/client-ses": "^3.583.0",
     "@elysiajs/cors": "^1.0.2",
     "@elysiajs/server-timing": "^1.0.2",
     "@elysiajs/swagger": "^1.0.5",
@@ -26,8 +28,8 @@
     "@types/pg": "^8.11.6",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
+    "@repo/eslint-config": "workspace:*",
     "eslint": "^8.57.0",
-    "@repo/eslint-config": "*",
     "prettier": "^3.2.5"
   },
   "peerDependencies": {
