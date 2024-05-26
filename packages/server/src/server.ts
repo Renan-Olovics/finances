@@ -3,11 +3,10 @@ import { swagger } from '@elysiajs/swagger'
 import { cors } from '@elysiajs/cors'
 import { Elysia } from 'elysia'
 
-import { db, mail } from '@/providers'
+import { db, mail, sms, whatsapp } from '@/providers'
 import { health } from '@/modules'
 
 import { env } from '.'
-import { whatsapp } from './providers/whatsapp'
 
 export const app = new Elysia()
   .use(cors())
@@ -16,8 +15,9 @@ export const app = new Elysia()
   .decorate('db', db)
   .decorate('mail', mail)
   .decorate('whatsapp', whatsapp)
+  .decorate('sms', sms)
   .get('/', () => 'Welcome to Elysia!')
-  .get('/kkk', ({ mail }) => mail.send.example({ emails: ['renanolovics@gmail.com'] }))
+  .get('/kkk', ({ sms }) => sms.send.example({ to: ['renanolovics@gmail.com'] }))
   .use(health)
   .listen(env.PORT)
 
