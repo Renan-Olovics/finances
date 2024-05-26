@@ -7,6 +7,7 @@ import { db, mail } from '@/providers'
 import { health } from '@/modules'
 
 import { env } from '.'
+import { whatsapp } from './providers/whatsapp'
 
 export const app = new Elysia()
   .use(cors())
@@ -14,6 +15,7 @@ export const app = new Elysia()
   .use(serverTiming())
   .decorate('db', db)
   .decorate('mail', mail)
+  .decorate('whatsapp', whatsapp)
   .get('/', () => 'Welcome to Elysia!')
   .get('/kkk', ({ mail }) => mail.send.example({ emails: ['renanolovics@gmail.com'] }))
   .use(health)
