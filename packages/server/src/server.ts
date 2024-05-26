@@ -3,10 +3,9 @@ import { swagger } from '@elysiajs/swagger'
 import { cors } from '@elysiajs/cors'
 import { Elysia } from 'elysia'
 
-import { db } from '@/providers'
+import { db, mail } from '@/providers'
 import { health } from '@/modules'
 
-import { sendEmail } from './providers/mail'
 import { env } from '.'
 
 export const app = new Elysia()
@@ -14,8 +13,9 @@ export const app = new Elysia()
   .use(swagger())
   .use(serverTiming())
   .decorate('db', db)
+  .decorate('mail', mail)
   .get('/', () => 'Welcome to Elysia!')
-  .get('/kkk', () => sendEmail(['renanolovics@gmail.com']))
+  .get('/kkk', ({ mail }) => mail.send.example({ emails: ['renanolovics@gmail.com'] }))
   .use(health)
   .listen(env.PORT)
 
