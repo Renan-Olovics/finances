@@ -3,13 +3,14 @@ import { treaty } from '@elysiajs/eden'
 import { faker } from '@faker-js/faker'
 import { StatusMap } from 'elysia'
 
-import { app } from '@/server'
-import { db } from '@/providers'
 import { userTable } from '@/db/schemas'
+import { db } from '@/providers'
+import { app } from '@/server'
+import { createUser } from './utils'
+
+const api = treaty(app)
 
 describe('Auth Module', () => {
-  const api = treaty(app)
-
   describe('POST /auth/register', () => {
     afterEach(async () => {
       await db.delete(userTable)
@@ -56,6 +57,50 @@ describe('Auth Module', () => {
 
         expect(status).toBe(StatusMap['Unprocessable Content'])
       }
+    })
+  })
+  describe('POST /auth/login', () => {
+    it('should return token with status 209 if everything is ok', async () => {
+      const user = {
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+        name: faker.person.firstName(),
+        surname: faker.person.lastName(),
+        phone: faker.phone.number(),
+      }
+      await api.auth.register.post(user)
+      const { data, status } = await api.auth.login.post({
+        email: user.email,
+        password: user.password,
+      })
+
+      expect(data?.token).toBeDefined()
+      expect(status).toBe(StatusMap.OK)
+    })
+    it('should return status 401 if user is not found or password incorrect', async () => {
+      const user = await createUser({
+        db,
+        user: {
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          name: faker.person.firstName(),
+          surname: faker.person.lastName(),
+          phone: faker.phone.number(),
+        },
+      })
+
+      const { status } = await api.auth.login.post({
+        email: user.email,
+        password: faker.internet.password(),
+      })
+
+      expect(status).toBe(StatusMap.Unauthorized)
+
+      const { status: statuscode } = await api.auth.login.post({
+        email: faker.internet.email(),
+        password: user.password,
+      })
+      expect(statuscode).toBe(StatusMap.Unauthorized)
     })
   })
 })

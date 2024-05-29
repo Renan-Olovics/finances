@@ -15,6 +15,7 @@ export const env = createEnv({
     AWS_SECRET_KEY: z.string(),
     AWS_SES_REGION: z.string(),
     AWS_SES_SENDER_EMAIL: z.string(),
+    JWT_SECRET: z.string(),
   },
   runtimeEnv: process.env,
 })
