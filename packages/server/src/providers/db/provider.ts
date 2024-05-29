@@ -8,3 +8,5 @@ const client = new Client({ connectionString: env.DB_URL })
 await client.connect()
 
 export const db = drizzle(client, { schema, logger: true })
+
+export type Db = typeof db
