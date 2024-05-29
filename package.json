@@ -10,6 +10,9 @@
     "db:generate": "turbo run db:generate --filter=./packages/server",
     "db:push": "turbo run db:push --filter=./packages/server"
   },
+  "dependencies": {
+    "dotenv-cli": "^7.4.2"
+  },
   "devDependencies": {
     "@eslint/js": "^9.3.0",
     "@repo/eslint-config": "*",
@@ -27,8 +30,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "dependencies": {
-    "dotenv-cli": "^7.4.2"
-  }
+  ]
 }

@@ -7,4 +7,4 @@ import { env } from 'env'
 const client = new Client({ connectionString: env.DB_URL })
 await client.connect()
 
-export const db = drizzle(client, { schema })
+export const db = drizzle(client, { schema, logger: true })

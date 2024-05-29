@@ -8,8 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run with-env bun run --watch src/index.ts",
     "with-env": "dotenv -e ../../.env --",
-    "db:generate": "npx drizzle-kit generate",
-    "db:push": "bun run with-env npx drizzle-kit push"
+    "db:generate": "bun run with-env npx drizzle-kit generate",
+    "db:push": "bun run with-env npx drizzle-kit push",
+    "db:seed": "bun run with-env bun run src/db/seed/index.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.582.0",
@@ -17,20 +18,24 @@
     "@elysiajs/cors": "^1.0.2",
     "@elysiajs/server-timing": "^1.0.2",
     "@elysiajs/swagger": "^1.0.5",
-    "@t3-oss/env-core": "^0.9.1",
     "@react-email/render": "0.0.15",
-    "@repo/react-emails": "workspace:*",
+    "@t3-oss/env-core": "^0.9.1",
+    "argon2": "^0.40.3",
+    "@repo/react-emails": "*",
     "drizzle-orm": "^0.30.10",
     "elysia": "latest",
-    "pg": "^8.11.5"
+    "pg": "^8.11.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "bun-types": "latest",
     "drizzle-kit": "^0.21.2",
+    "@repo/eslint-config": "*",
     "@types/pg": "^8.11.6",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
-    "@repo/eslint-config": "workspace:*",
+    "@faker-js/faker": "^8.4.1",
+    "@types/uuid": "^9.0.8",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5"
   },
