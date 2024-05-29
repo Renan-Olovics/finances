@@ -12,8 +12,6 @@ export const app = new Elysia()
   .use(cors())
   .use(swagger())
   .use(serverTiming())
-  // .onError(({ error }) => new Response(error.toString()))
-
   .decorate({ db, mail, sms, whatsapp })
   .use(health)
   .use(auth)
