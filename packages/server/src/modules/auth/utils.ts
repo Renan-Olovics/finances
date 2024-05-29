@@ -32,7 +32,10 @@ export const createUser = async ({ db, user }: CreateUser) => {
 
   const passwordHash = await hash(password)
 
-  const response = await db.insert(userTable).values({ ...userData, password: passwordHash })
+  const response = await db
+    .insert(userTable)
+    .values({ ...userData, password: passwordHash })
+    .returning()
 
-  return response
+  return response[0]
 }

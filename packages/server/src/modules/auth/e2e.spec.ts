@@ -7,14 +7,14 @@ import { app } from '@/server'
 import { db } from '@/providers'
 import { userTable } from '@/db/schemas'
 
-afterEach(async () => {
-  await db.delete(userTable)
-})
-
 describe('Auth Module', () => {
   const api = treaty(app)
 
   describe('POST /auth/register', () => {
+    afterEach(async () => {
+      await db.delete(userTable)
+    })
+
     it('should return 209 status code if user can be created', async () => {
       const { status } = await api.auth.register.post({
         email: faker.internet.email(),

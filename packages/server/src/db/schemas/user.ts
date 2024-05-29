@@ -1,3 +1,4 @@
+import { InferSelectModel } from 'drizzle-orm'
 import { pgTable, uuid, text, varchar, index } from 'drizzle-orm/pg-core'
 
 export const userTable = pgTable(
@@ -14,3 +15,5 @@ export const userTable = pgTable(
     emailIndex: index('email_index').on(email),
   }),
 )
+
+export type User = InferSelectModel<typeof userTable>
